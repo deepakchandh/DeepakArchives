@@ -29,6 +29,6 @@ public class WordBreakDP {
 	}
 
 	public static void main(String[] args){
-		System.out.println(  wordBreak("catsandog", Arrays.asList("cats","dog","sand","and","cat")));
+		System.out.println(  wordBreak("catsandog", Arrays.asList("cats","dog","an")));
 	}
 }

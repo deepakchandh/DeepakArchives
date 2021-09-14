@@ -1,6 +1,7 @@
 package com.java.practice;
 //$Id$
-
+//https://leetcode.com/problems/implement-stack-using-queues/
+//https://leetcode.com/problems/implement-queue-using-stacks/discuss/64206/Short-O(1)-amortized-C%2B%2B-Java-Ruby
 import java.util.Queue;
 
 public class StackUsingQ {
@@ -9,8 +10,7 @@ public class StackUsingQ {
 
 	void push(int x){
 		queue.add(x);
-		queue.isEmpty();
-		for(int i=1;i<queue.size();i++)
+		for(int i=1;i<queue.size();i++) // //rotate the queue to make the tail be the head[
 			queue.add(queue.poll());
 	}
 

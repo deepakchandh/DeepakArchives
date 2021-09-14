@@ -23,12 +23,9 @@ public class LongestCommonSubsequence {
 			}
 			System.out.println();
 		}
-//		for (int i = 0; i < s1.length(); ++i){
-//			for (int j = 0; j < s2.length(); ++j){
-//				System.out.print(dp[i][j]+" ");
-//			}
-//			System.out.println();
-//		}
+
+
+//		for (int i = 0; i < s1.len
 		
 		
 		return dp[s1.length()][s2.length()];

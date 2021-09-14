@@ -85,18 +85,18 @@ public class AddTwoLL {
 
 	public static void main(String[] args) {
 		System.out.println("started");
-		ListNode list1 = new ListNode(1);
-		list1.next = new ListNode(2);
+		ListNode list1 = new ListNode(5);
+		list1.next = new ListNode(6);
 		list1.next.next = new ListNode(3);
-		list1.next.next.next = new ListNode(4);
-		list1.next.next.next.next = new ListNode(5);
+//		list1.next.next.next = new ListNode(4);
+//		list1.next.next.next.next = new ListNode(5);
 
-		System.out.println(reverse(list1, 2));
-		ListNode list2 = new ListNode(5);
-		list2.next = new ListNode(6);
-		list2.next.next = new ListNode(4);
+//		System.out.println(reverse(list1, 2));
+		ListNode list2 = new ListNode(8);
+		list2.next = new ListNode(4);
+		list2.next.next = new ListNode(2);
 
-		//		System.out.println(addTwoNumbers(list1, list2));;
+		System.out.println(addTwoNumbers(list1, list2));;
 
 
 	}

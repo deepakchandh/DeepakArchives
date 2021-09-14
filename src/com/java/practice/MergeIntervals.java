@@ -36,8 +36,14 @@ public class MergeIntervals {
 	    {
 	        int [][]mat = {{2,6}, {1,3}, {8,10}, {15,18}
 	        };
-	        
-	        
-	        System.out.println(merge(mat).toString());
+			int [][]res = merge(mat);
+
+//			for (int i=0; i< res.length;i++){
+//				for(int j=0;j< res[0].length;i++)
+//					System.out.print(res[i][j]+" ");
+//				System.out.println();
+//			}
+
+//			System.out.println(merge(mat).toString());
 	    }
 }

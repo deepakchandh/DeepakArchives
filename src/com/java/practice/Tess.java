@@ -38,11 +38,14 @@ public class Tess {
 	
 	
 	 public static void main(String[] args){
-		;
-		Stack<Integer> stack =  new Stack<>();
-		stack.push(1);
-		stack.push(1);
-		System.out.println(stack);
+
+	    String stt = "Deepak";
+	    stt = stt.concat("ss");
+	    System.out.println(stt);
+//		Stack<Integer> stack =  new Stack<>();
+//		stack.push(1);
+//		stack.push(1);
+//		System.out.println(stack);
 		
 //		 System.out.println(  wordBreak("catsandog", Arrays.asList("cats","dog","sand","and","cat")));
 		 

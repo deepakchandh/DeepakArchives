@@ -9,6 +9,17 @@ import java.util.*;
 //BFS
 public class DetectCycleInUnDirected {
 
+	/*
+	sample input
+	1
+	5 5
+0 4
+1 2
+1 4
+2 3
+3 4
+	 */
+
 	public static void main(String[] args) throws IOException
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -28,11 +39,10 @@ public class DetectCycleInUnDirected {
                 adj.get(u).add(v);
                 adj.get(v).add(u);
             }
-            boolean ans = isCycle(V, adj);
-            if(ans)
-                System.out.println("1");
+            if(isCycle(V, adj))
+                System.out.println("Its a cycle");
             else
-                System.out.println("0");
+                System.out.println("Not a cycle");
 		}
 	}
 
@@ -56,7 +66,7 @@ public class DetectCycleInUnDirected {
 
 		visited[s] = true;
 		q.add(s);
-
+//We use a parent array to keep track of the parent vertex for a vertex so that we do not consider the visited parent as a cycle. wo
 		while (!q.isEmpty())
 		{
 			int u = q.poll();
