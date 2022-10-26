@@ -9,15 +9,15 @@ public class Merge2SortedArrays {
     {
  
         // length of first arr1
-        int n = arr1.length;
+        int arr1Length = arr1.length;
  
         // length of second arr2
-        int m = arr2.length;
+        int arr2Length = arr2.length;
  
         // Now traverse the array1 and if
         // arr2 first element
         // is less than arr1 then swap
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < arr1Length; i++) {
  
             if (arr1[i] > arr2[0]) {
  
@@ -33,10 +33,7 @@ public class Merge2SortedArrays {
                 int firstElement = arr2[0];
  
                 int k;
-                for (k = 1;
-                     k < m && arr2[k] < firstElement;
-                     k++)
-                {
+                for (k = 1; k < arr2Length && arr2[k] < firstElement; k++) {
                     arr2[k - 1] = arr2[k];
                 }
                 arr2[k - 1] = firstElement;
@@ -51,9 +48,9 @@ public class Merge2SortedArrays {
         System.out.println();
  
         // read the arr2
-        for (int i : arr2) {
-            System.out.print(arr2[i] + " ");
-        }
+//        for (int i : arr2) {
+//            System.out.print(arr2[i] + " ");
+//        }
     }
 	
 	public static void main(String[] args)
