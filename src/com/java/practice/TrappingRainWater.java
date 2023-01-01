@@ -2,8 +2,40 @@
 package com.java.practice;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class TrappingRainWater {
+
+	static int stackBasedApproach(int[] height, int n){
+		Stack<Integer> stack = new Stack<>();
+
+		int ans = 0;
+
+		for (int i = 0; i < n; i++) {
+
+			// Remove bars from the stack
+			// until the condition holds
+			while ((!stack.isEmpty()) && (height[stack.peek()] < height[i])) {
+
+				int pop_height = height[stack.peek()];
+				stack.pop();
+
+				// If the stack does not have any bars or the popped bar has no left boundary
+				if (stack.isEmpty())
+					break;
+
+				// Get the distance between the
+				// left and right boundary of
+				// popped bar
+				int distance = i - stack.peek() - 1;
+
+				int min_height = Math.min(height[stack.peek()], height[i]) - pop_height;
+				ans += distance * min_height;
+			}
+			stack.push(i);
+		}
+		return ans;
+	}
 
 	static int maxWater(int[] arr, int n)
 	{
@@ -54,9 +86,10 @@ public class TrappingRainWater {
 	public static void main(String []args)
 	{
 		
-		int[] arr = {3, 0, 2, 0, 4};
+		int[] arr = {3,0,2,0,4};
 		int n = arr.length;
-		System.out.print(maxWater(arr, n));
+//		System.out.print(maxWater(arr, n));
+		System.out.print(stackBasedApproach(arr, n));
 	}
 
 }
