@@ -2,17 +2,53 @@ package com.java.graphs;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Stack;
+import java.util.*;
 //https://www.geeksforgeeks.org/topological-sorting/
 // logic here is --> Simply do DFS and store all the result values in Stack. and then print elements of stack
 
 public class TopologicalSort {
 
-
     private int V;
 
     // Adjacency List as ArrayList of ArrayList's
     private ArrayList<ArrayList<Integer>> adj;
+
+    // readily avbl method
+    static int[] topoSort(int N, ArrayList<ArrayList<Integer>> adj) {
+        Stack<Integer> st = new Stack<Integer>();
+        int vis[] = new int[N];
+
+        for(int i = 0;i<N;i++) {
+            if(vis[i] == 0) {
+                findTopoSort(i, vis, adj, st);
+            }
+        }
+
+        int topo[] = new int[N];
+        int ind = 0;
+        while(!st.isEmpty()) {
+            topo[ind++] = st.pop();
+        }
+        return topo;
+    }
+
+    static void findTopoSort(int node, int vis[], ArrayList<ArrayList<Integer>> adj, Stack<Integer> st) {
+        vis[node] = 1;
+        for(Integer it: adj.get(node)) {
+            if(vis[it] == 0) {
+                findTopoSort(it, vis, adj, st);
+            }
+        }
+        st.push(node);
+    }
+
+
+
+
+
+
+
+
 
     // Constructor
     TopologicalSort(int v)
@@ -28,9 +64,27 @@ public class TopologicalSort {
         adj.get(v).add(w);
     }
 
+    List<Integer> topologicalSort()
+    {
+        List<Integer> res = new ArrayList<>();
+        Stack<Integer> stack = new Stack<>();
+        boolean visited[] = new boolean[V];
+
+        for (int i = 0; i < V; i++)
+            visited[i] = false;
+
+        for (int i = 0; i < V; i++)
+            if (visited[i] == false)
+                topologicalSortUtil(i, visited, stack);
+
+        while (stack.empty() == false)
+            res.add(stack.pop());
+
+        return res;
+    }
+
     // A recursive function used by topologicalSort
-    void topologicalSortUtil(int v, boolean visited[],
-                             Stack<Integer> stack)
+    void topologicalSortUtil(int v, boolean visited[], Stack<Integer> stack)
     {
         // Mark the current node as visited.
         visited[v] = true;
@@ -48,30 +102,6 @@ public class TopologicalSort {
         // Push current vertex to stack
         // which stores result
         stack.push(new Integer(v));
-    }
-
-    // The function to do Topological Sort.
-    // It uses recursive topologicalSortUtil()
-    void topologicalSort()
-    {
-        Stack<Integer> stack = new Stack<Integer>();
-
-        // Mark all the vertices as not visited
-        boolean visited[] = new boolean[V];
-        for (int i = 0; i < V; i++)
-            visited[i] = false;
-
-        // Call the recursive helper
-        // function to store
-        // Topological Sort starting
-        // from all vertices one by one
-        for (int i = 0; i < V; i++)
-            if (visited[i] == false)
-                topologicalSortUtil(i, visited, stack);
-
-        // Print contents of stack
-        while (stack.empty() == false)
-            System.out.print(stack.pop() + " ");
     }
 
     // Driver code

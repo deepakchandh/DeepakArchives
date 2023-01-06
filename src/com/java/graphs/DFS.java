@@ -4,6 +4,45 @@ package com.java.graphs;
 import java.util.*;
 import java.io.*;
 public class DFS {
+
+	// readymade method
+
+	// https://takeuforward.org/data-structure/depth-first-search-dfs-traversal-graph/
+	public static ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
+	{
+		ArrayList<Integer> storeDfs = new ArrayList<>();
+
+		//boolean array to keep track of visited vertices
+		boolean vis[] = new boolean[V+1];
+
+		//If you are starting from node 2, then i should start from 2.
+		for(int i = 1;i<=V;i++) {
+			if(!vis[i])
+				dfs(i, vis, adj, storeDfs);
+		}
+
+		return storeDfs;
+	}
+
+	public static void dfs(int node, boolean vis[], ArrayList<ArrayList<Integer>> adj, ArrayList<Integer> storeDfs) {
+		storeDfs.add(node);
+		//marking current node as visited
+		vis[node] = true;
+
+		//getting neighbour nodes
+		for(Integer it: adj.get(node)) {
+			if(vis[it] == false) {
+				dfs(it, vis, adj, storeDfs);
+			}
+		}
+	}
+
+
+
+
+
+
+
 	public static void main(String[] args) throws IOException
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -30,64 +69,7 @@ public class DFS {
 			System.out.println();
 		}
 	}
-	
-	/*static void DFS(int V, ArrayList<ArrayList<Integer>> adj)
-	{
-		Vector<Boolean> visited = new Vector<Boolean>(V);
-		// Mark all the vertices as not visited
-		for (int i = 0; i < V; i++)
-			visited.add(false);
 
-		for (int i = 0; i < V; i++)
-			if (!visited.get(i))
-				DFSUtil(i, visited,adj);
-	}
-	
-	static void DFSUtil(int s, Vector<Boolean> visited, ArrayList<ArrayList<Integer>> adj)
-	{
-		// Create a stack for DFS
-		Stack<Integer> stack = new Stack<>();
-		
-		stack.push(s);
-		
-		while(stack.empty() == false)
-		{
-			s = stack.pop();
-			if(visited.get(s) == false)
-			{
-				System.out.print(s + " ");
-				visited.set(s, true);
-			}
-			Iterator<Integer> itr = adj.get(s).iterator();
-			while (itr.hasNext())
-			{
-				int v = itr.next();
-				if(!visited.get(v))
-					stack.push(v);
-			}
-		}
-	}*/
-
-	public static ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj)
-	{
-		boolean visited[] = new boolean[V];
-		ArrayList<Integer> ans = new ArrayList<Integer>();
-		doDfs(adj, visited, 0, ans);
-		return ans;
-	}
-
-	static void doDfs(ArrayList<ArrayList<Integer>> g, boolean[] visited, int currentNode, ArrayList<Integer> ans){
-		if(visited[currentNode]){
-			return;
-		}
-		ans.add(currentNode);
-		visited[currentNode] = true;
-		Iterator<Integer> iter = g.get(currentNode).iterator();
-		while(iter.hasNext()){
-			int i = iter.next();
-			doDfs(g, visited,i, ans);
-		}
-	}
 }
 
 

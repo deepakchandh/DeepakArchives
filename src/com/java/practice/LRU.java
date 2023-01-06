@@ -1,12 +1,15 @@
 //$Id$
 package com.java.practice;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class LRU {
 	
 	public static void main(String[] args) {
 		int capacity = 4;
+		TreeMap<Integer,Integer>map=new TreeMap<>();
+		map.ceilingKey(7);
+
 		int arr[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2};
 		ArrayList<Integer> s=new ArrayList<>(capacity);
 		int count=0;
