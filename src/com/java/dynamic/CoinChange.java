@@ -40,6 +40,8 @@ public class CoinChange {
             }
         }
 
+        System.out.println(dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount]);
+
         return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
     }
 
