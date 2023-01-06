@@ -1,8 +1,7 @@
 //$Id$
 package com.java.dynamic;
 
-import com.java.graphs.BFS;
-
+//https://leetcode.com/problems/coin-change/
 public class CoinChange {
 
     // rep coin logic
@@ -55,7 +54,6 @@ public class CoinChange {
         System.out.println(ways);
 
         try {
-            BFS.class.newInstance();
         } catch (Exception e) {
 
         }
