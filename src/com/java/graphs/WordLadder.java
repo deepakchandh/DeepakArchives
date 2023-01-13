@@ -2,7 +2,7 @@ package com.java.graphs;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//https://leetcode.com/problems/word-search-ii/description/
 public class WordLadder {
 
     class TrieNode {
@@ -63,7 +63,7 @@ public class WordLadder {
                 {'i','h','k','r'},
                 {'i', 'f', 'l', 'v'}
         };
-        System.out.println(wordLadder.findWords( mat, new String[]{"oath","pea","eat","rain"}));
+        System.out.println(wordLadder.findWords( mat, new String[]{"oath","pea","eat","rain", "eater", "peanuts"}));
 
     }
 }
