@@ -2,39 +2,34 @@
 package com.java.practice;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class TrappingRainWater {
 
-	static int stackBasedApproach(int[] height, int n){
+	//https://leetcode.com/problems/trapping-rain-water/description/
+
+	// also see https://leetcode.com/problems/container-with-most-water/submissions/877837628/ this problem
+	static int trap(int[] height, int n) {
+		int totalWater = 0;
 		Stack<Integer> stack = new Stack<>();
-
-		int ans = 0;
-
-		for (int i = 0; i < n; i++) {
-
-			// Remove bars from the stack
-			// until the condition holds
-			while ((!stack.isEmpty()) && (height[stack.peek()] < height[i])) {
-
-				int pop_height = height[stack.peek()];
-				stack.pop();
-
-				// If the stack does not have any bars or the popped bar has no left boundary
-				if (stack.isEmpty())
+		for(int right=0;right<height.length;right++){
+			while(!stack.isEmpty() && height[stack.peek()] < height[right]){
+				int bottom = stack.pop();
+				if (stack.isEmpty()) {
 					break;
+				}
 
-				// Get the distance between the
-				// left and right boundary of
-				// popped bar
-				int distance = i - stack.peek() - 1;
+				int left = stack.peek();
 
-				int min_height = Math.min(height[stack.peek()], height[i]) - pop_height;
-				ans += distance * min_height;
+				int width = right - left - 1;
+				int ht = Math.min(height[right], height[left]) - height[bottom];
+				int water = width * ht;
+				totalWater += water;
 			}
-			stack.push(i);
+			stack.push(right);
 		}
-		return ans;
+		return totalWater;
 	}
 
 	static int maxWater(int[] arr, int n)
@@ -89,7 +84,7 @@ public class TrappingRainWater {
 		int[] arr = {3,0,2,0,4};
 		int n = arr.length;
 //		System.out.print(maxWater(arr, n));
-		System.out.print(stackBasedApproach(arr, n));
+		System.out.print(trap(arr, n));
 	}
 
 }

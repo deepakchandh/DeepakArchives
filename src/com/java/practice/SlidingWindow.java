@@ -4,6 +4,9 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 //https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/
+
+
+// idea is to have all elements at the last and remove at last if its small. We'll remove in first only when K size exceeds
 public class SlidingWindow {
 
     static void printMax(int arr[], int N, int K)

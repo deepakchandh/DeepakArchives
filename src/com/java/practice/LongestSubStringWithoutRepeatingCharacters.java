@@ -1,7 +1,7 @@
 //$Id$
 package com.java.practice;
 //https://leetcode.com/problems/longest-substring-without-repeating-characters/submissions/505505890/
-import java.util.ArrayList;
+import java.util.*;
 
 public class LongestSubStringWithoutRepeatingCharacters {
 
@@ -49,9 +49,29 @@ public class LongestSubStringWithoutRepeatingCharacters {
      {
 	     //int ss  = romanToInt("MCMIV");
 //	     System.out.println(ss);
-	     System.out.println(lengthOfLongestSubstring("abcabcbb"));
+	     System.out.println(lengthOfLongestSubstring2("abcbbcb"));
 
      }
+
+    public static int lengthOfLongestSubstring2(String s) {
+        int i = 0, j = 0, max = 0;
+        Set<Character> set = new HashSet<>();
+
+        while (j < s.length()) {
+            if (!set.contains(s.charAt(j))) {
+                set.add(s.charAt(j++));
+                max = Math.max(max, set.size());
+            } else {
+                set.remove(s.charAt(i++));
+            }
+        }
+
+        return max;
+
+    }
+
+
+
 	public static int lengthOfLongestSubstring(String s) {
 
 		if (s.length()==0) 
