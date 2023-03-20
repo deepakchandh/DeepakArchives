@@ -3,7 +3,7 @@ package com.java.LinkedList;
 import java.util.PriorityQueue;
 
 
-//https://practice.geeksforgeeks.org/problems/merge-k-sorted-linked-lists/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
+//https://practice.geeksforgeeks.org/problems/merge-k-sorted-linked-lists/ 1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 class Node
 {
     int data;

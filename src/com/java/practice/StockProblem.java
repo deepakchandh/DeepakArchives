@@ -35,16 +35,15 @@ public class StockProblem {
                 i++;
             if (i == n - 1)
                 break;
-            Interval e = new Interval();
-            e.buy = i++;
+            Interval interval = new Interval();
+            interval.buy = i++;
 
             while ((i < n) && (price[i] >= price[i - 1]))
                 i++;
 
             // Store the index of maxima
-            e.sell = i - 1;
-            sol.add(e);
-
+            interval.sell = i - 1;
+            sol.add(interval);
             count++;
         }
 
@@ -67,7 +66,7 @@ public class StockProblem {
 	{
 		int arr[]={100, 180, 260, 310, 40, 535, 695};
         StockProblem stockProblem = new StockProblem();
-//		System.out.println(maxProfit(arr));
+		System.out.println("Fuss" +maxProfit(arr));
         stockProblem.stockBuySell(arr, 7);
 //		System.out.println();
 

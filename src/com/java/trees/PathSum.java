@@ -3,6 +3,12 @@ package com.java.trees;
 //https://www.geeksforgeeks.org/root-to-leaf-path-sum-equal-to-a-given-number/
 
 public class PathSum {
+//https://leetcode.com/problems/path-sum/solutions/36367/3-lines-of-c-solution/?orderBy=most_votes
+    public boolean hasPathSums(Node2 root, int targetSum) {
+        if(root == null) return false;
+        if(root.data == targetSum && root.left == null && root.right == null) return true;
+        return hasPathSums(root.left, targetSum - root.data) || hasPathSums(root.right, targetSum - root.data);
+    }
 
     Node2 root;
     boolean hasPathSum(Node2 node, int sum)
@@ -26,7 +32,7 @@ public class PathSum {
     // Driver's Code
     public static void main(String args[])
     {
-        int sum = 21;
+        int sum = 23;
 
         /* Constructed binary tree is
               10
@@ -44,7 +50,7 @@ public class PathSum {
         tree.root.right.left = new Node2(2);
 
         // Function call
-        if (tree.hasPathSum(tree.root, sum))
+        if (tree.hasPathSums(tree.root, sum))
             System.out.println("There is a root to leaf path with sum "+ sum);
         else
             System.out.println("There is no root to leaf path with sum " + sum);

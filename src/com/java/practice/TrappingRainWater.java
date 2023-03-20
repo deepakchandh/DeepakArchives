@@ -4,7 +4,7 @@ package com.java.practice;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Stack;
-
+//https://leetcode.com/problems/trapping-rain-water/solutions/178028/stack-with-explanation-java-python-scala/?orderBy=most_votes
 public class TrappingRainWater {
 
 	//https://leetcode.com/problems/trapping-rain-water/description/
