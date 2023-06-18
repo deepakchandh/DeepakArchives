@@ -2,7 +2,7 @@ package com.java.arrays;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// #Arrays
 public class PascalTriangle {
 
     public static List<List<Integer>> generate(int numRows) {

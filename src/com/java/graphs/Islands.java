@@ -32,7 +32,16 @@ public class Islands {
                 {'0','0','0','0', '0'}
         };
 
-        System.out.println( numIslands(mat));
+        char mat2[][] = {{'1','1','0','0', '0'},
+                         {'1','1','0','0', '0'},
+                         {'0','0','1','0', '0'},
+                         {'0','0','0','1', '1'}
+        };
+
+
+
+
+        System.out.println( numIslands(mat2));
 //        for(int i=0;i<m;i++){
 //            for(int j=0;j<n;j++)
 //                System.out.print(mat[i][j] + " ");

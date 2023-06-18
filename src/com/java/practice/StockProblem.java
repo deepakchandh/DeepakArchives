@@ -8,17 +8,18 @@ public class StockProblem {
     class Interval {
         int buy, sell;
     }
-    // In the given array, calculates the max profit
+
 	public static int maxProfit(int prices[]) {
-        int minprice = Integer.MAX_VALUE;
-        int maxprofit = 0;
-        for (int i = 0; i < prices.length; i++) {
-            if (prices[i] < minprice)
-                minprice = prices[i];
-            else if (prices[i] - minprice > maxprofit)
-                maxprofit = prices[i] - minprice;
+        int profit = 0, i = 0;
+        while (i < prices.length) {
+            while (i < prices.length-1 && prices[i+1] <= prices[i]) // find local minimum
+                i++;
+            int min = prices[i++];
+            while (i < prices.length-1 && prices[i+1] >= prices[i]) // find local maximum
+                i++;
+            profit += i < prices.length ? prices[i++] - min : 0;
         }
-        return maxprofit;
+        return profit;
     }
 
     // In the given array, calculates the MULTIPLE INTERVALS of max profit
@@ -64,10 +65,11 @@ public class StockProblem {
 
 	public static void main(String[] args)
 	{
-		int arr[]={100, 180, 260, 310, 40, 535, 695};
+//		int arr[]={100, 180, 260, 310, 40, 535, 695};
+		int arr[]={7,1,5,3,6,4};
         StockProblem stockProblem = new StockProblem();
-		System.out.println("Fuss" +maxProfit(arr));
-        stockProblem.stockBuySell(arr, 7);
+		System.out.println("Result: " +maxProfit(arr));
+//        stockProblem.stockBuySell(arr, 7);
 //		System.out.println();
 
 	}

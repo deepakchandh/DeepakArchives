@@ -1,15 +1,34 @@
 //$Id$
 package com.java.practice;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
+
+// #Stack
+
 //https://leetcode.com/problems/trapping-rain-water/solutions/178028/stack-with-explanation-java-python-scala/?orderBy=most_votes
 public class TrappingRainWater {
 
 	//https://leetcode.com/problems/trapping-rain-water/description/
 
 	// also see https://leetcode.com/problems/container-with-most-water/submissions/877837628/ this problem
+
+
+	public int largestRectangleArea(int[] heights) {
+		int n = heights.length;
+		Stack<Integer> stack = new Stack();
+		int maxArea = 0;
+		for(int right = 0; right <= n; right++){
+			int h = right == n ? 0 : heights[right];
+			while(!stack.isEmpty() && h < heights[stack.peek()]){
+				int curHeight = heights[stack.pop()];
+				int left = stack.isEmpty() ? -1 : stack.peek();
+				int area = curHeight * (right - left - 1);
+				maxArea = Math.max(maxArea, area);
+			}
+			stack.push(right);
+		}
+		return maxArea;
+	}
 	static int trap(int[] height, int n) {
 		int totalWater = 0;
 		Stack<Integer> stack = new Stack<>();
@@ -81,10 +100,12 @@ public class TrappingRainWater {
 	public static void main(String []args)
 	{
 		
-		int[] arr = {3,0,2,0,4};
+//		int[] arr = {3,0,2,0,4};
+		int[] arr = {2,1,5,6,2,3};
 		int n = arr.length;
 //		System.out.print(maxWater(arr, n));
-		System.out.print(trap(arr, n));
+//		System.out.print(trap(arr, n));
+//		System.out.print(largestRectangleArea(arr));
 	}
 
 }
