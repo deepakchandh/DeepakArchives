@@ -37,8 +37,9 @@ public class ZigZagConcatenation {
 
     public static void main(String[] args) {
 
-        String str = "PAYPALISHIRING";
-        int N = 3;
+//        String str = "PAYPALISHIRING";
+        String str = "ABCDEFGH";
+        int N = 2;
         printZigZagConcat(str, N);
 
     }

@@ -4,7 +4,7 @@ package com.java.dynamic;
 
 //https://leetcode.com/problems/unique-paths/solutions/1175465/java-3-approaches-dp-recursion-memoization/
 public class UniquePathLC {
-
+// recursion logicc
     public static int uniquePathss(int m, int n) {
         // base case
         if(m == 1 || n == 1)
@@ -18,6 +18,7 @@ public class UniquePathLC {
         return downMove + rightMove;
     }
 
+    // dp logic
     public static int uniquePaths(int m, int n) {
         Integer[][] map = new Integer[m][n];
         for(int i = 0; i<m;i++){
@@ -35,7 +36,7 @@ public class UniquePathLC {
     }
 
     public static void main(String[] args) {
-        System.out.println(uniquePathss(3, 2));
+        System.out.println(uniquePaths(3, 2));
 
     }
 }

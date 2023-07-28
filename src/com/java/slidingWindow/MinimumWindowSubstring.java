@@ -7,55 +7,44 @@ import java.util.*;
 public class MinimumWindowSubstring {
 
     public static String minWindowSliding(String s, String t) {
-        if (s == null || t == null) {
-            throw new IllegalArgumentException("Input string is null");
-        }
-        if (s.length() < t.length() || t.length() == 0) {
-            return "";
-        }
+        int minStart =0, minLen =Integer.MAX_VALUE, start=0, end=0;
 
         HashMap<Character, Integer> map = new HashMap<>();
         for (int i = 0; i < t.length(); i++) {
             map.put(t.charAt(i), map.getOrDefault(t.charAt(i), 0) + 1);
         }
 
-        int start = 0;
-        int end = 0;
-        int charTLeft = t.length();
-        int minStart = 0;
-        int minLen = Integer.MAX_VALUE;
+        int charLeft = t.length();
 
-        while (end < s.length()) {
-            char eChar = s.charAt(end);
-            if (map.containsKey(eChar)) {
-                int count = map.get(eChar);
-                if (count > 0) {
-                    charTLeft--;
+        while(end < s.length()){
+            if(map.containsKey(s.charAt(end))){
+                int cnt = map.get(s.charAt(end));
+                if (cnt > 0) {
+                    charLeft--;
                 }
-                map.put(eChar, count - 1);
+                map.put(s.charAt(end), cnt-1);
             }
             end++;
 
-
-            // Sliding window logic
-            // There might extra prefix chars that we don't need.
-            while (charTLeft == 0) {
-                if (minLen > end - start) {
-                    minLen = end - start;
+            // Sliding window.. Removing the older elements
+            while(charLeft  == 0){
+                if(minLen > end-start ){
+                    minLen = end-start;
                     minStart = start;
                 }
-                char sChar = s.charAt(start);
-                if (map.containsKey(sChar)) {
-                    int count = map.get(sChar);
+
+                if(map.containsKey(s.charAt(start))){
+                    int count = map.get(s.charAt(start));
                     if (count == 0) {
-                        charTLeft++;
+                        charLeft++;
                     }
-                    map.put(sChar, count + 1);
+                    map.put(s.charAt(start), count+1);
                 }
+
                 start++;
             }
-        }
 
+        }
         return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
     }
 

@@ -13,7 +13,7 @@ public class TrappingRainWater {
 	// also see https://leetcode.com/problems/container-with-most-water/submissions/877837628/ this problem
 
 
-	public int largestRectangleArea(int[] heights) {
+	/*public int largestRectangleArea(int[] heights) {
 		int n = heights.length;
 		Stack<Integer> stack = new Stack();
 		int maxArea = 0;
@@ -28,7 +28,9 @@ public class TrappingRainWater {
 			stack.push(right);
 		}
 		return maxArea;
-	}
+	}*/
+
+
 	static int trap(int[] height, int n) {
 		int totalWater = 0;
 		Stack<Integer> stack = new Stack<>();
@@ -49,6 +51,20 @@ public class TrappingRainWater {
 			stack.push(right);
 		}
 		return totalWater;
+	}
+
+
+
+	// Driver code
+	public static void main(String []args)
+	{
+		
+//		int[] arr = {3,0,2,0,4};
+		int[] arr = {2,1,5,6,2,3};
+		int n = arr.length;
+//		System.out.print(maxWater(arr, n));
+		System.out.print(trap(arr, n));
+//		System.out.print(largestRectangleArea(arr));
 	}
 
 	static int maxWater(int[] arr, int n)
@@ -94,18 +110,6 @@ public class TrappingRainWater {
 			}
 		}
 		return result;
-	}
-
-	// Driver code
-	public static void main(String []args)
-	{
-		
-//		int[] arr = {3,0,2,0,4};
-		int[] arr = {2,1,5,6,2,3};
-		int n = arr.length;
-//		System.out.print(maxWater(arr, n));
-//		System.out.print(trap(arr, n));
-//		System.out.print(largestRectangleArea(arr));
 	}
 
 }

@@ -44,7 +44,7 @@ public class LCA {
 		// Otherwise check if left subtree or right subtree is LCA
 		return (left_lca != null) ? left_lca : right_lca;
 	}
-	
+
 	public static void main(String args[])
 	{
 		LCA tree = new LCA();
@@ -55,8 +55,8 @@ public class LCA {
 		tree.root.left.right = new Node(5);
 		tree.root.right.left = new Node(6);
 		tree.root.right.right = new Node(7);
-		System.out.println("LCA(4, 5) = " +
-							tree.findLCA(4, 5).data);
+		// refer leet code soln
+		System.out.println("LCA(4, 5) = " + tree.findLCA(4, 5).data);
 //		System.out.println("LCA(4, 6) = " +
 //							tree.findLCA(4, 6).data);
 //		System.out.println("LCA(3, 4) = " +

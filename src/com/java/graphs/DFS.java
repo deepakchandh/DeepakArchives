@@ -21,6 +21,17 @@ public class DFS {
 				dfs(i, vis, adj, storeDfs);
 		}
 
+		/*
+		void dfs(boolean[][] vis, int x, int y){
+        if(x<0 || y<0 || vis[x][y] || grid[x][y] == 0 || )
+        vis[x][y] = true;
+        queue.offer(new int[] { x, y });
+        for(int[] dir: dirs){
+            dfs(vis, x+dir[0], y+dir[1]);
+        }
+    }
+		 */
+
 		return storeDfs;
 	}
 

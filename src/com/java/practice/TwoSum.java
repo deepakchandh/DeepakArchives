@@ -13,7 +13,7 @@ public class TwoSum {
                 result[1] = i;
                 result[0] = map.get(target - nums[i]);
                 System.out.println(result[0]+" "+result[1]);
-                return result;
+//                return result;
             }
             map.put(nums[i], i);
         }
@@ -22,7 +22,7 @@ public class TwoSum {
 
     public static void main(String []args)
     {
-        int[] arr = {2,7,11,15};
+        int[] arr = {2,7,5,11,4,15};
         int target = 9;
         System.out.println(twoSum(arr,target));
 
