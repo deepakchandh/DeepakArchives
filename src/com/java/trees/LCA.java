@@ -25,11 +25,9 @@ public class LCA {
 	Node findLCA(Node node, int n1, int n2)
 	{
 		// Base case
-		if (node == null)
-			return null;
-
-		if (node.data == n1 || node.data == n2)
+		if (node == null || node.data == n1 || node.data == n2)
 			return node;
+
 
 		// Look for keys in left and right subtrees
 		Node left_lca = findLCA(node.left, n1, n2);

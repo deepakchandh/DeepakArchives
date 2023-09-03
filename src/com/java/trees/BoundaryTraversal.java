@@ -21,8 +21,8 @@ public class BoundaryTraversal {
         return ;
         
           if(root.left==null && root.right==null)
-        System.out.print(root.data+" ");
-        printLeaves(root.left);
+            System.out.print(root.data+" ");
+         printLeaves(root.left);
          printLeaves(root.right);
       
         

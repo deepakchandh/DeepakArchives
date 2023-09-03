@@ -31,7 +31,7 @@ public class InvertBinaryTree {
     }
 
     public static void main(String[] args) {
-        TreeNode tree = new TreeNode();
+        TreeNode tree;
         tree = new TreeNode(1, null, null);
         tree.left = new TreeNode(1, null, null);
         tree.right = new TreeNode(1, null, null);

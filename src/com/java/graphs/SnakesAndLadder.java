@@ -4,7 +4,7 @@ import java.util.*;
 //https://www.geeksforgeeks.org/snake-ladder-problem-2/ - BFS
 public class SnakesAndLadder {
 
-    static class qentry {
+    static class Qentry {
         int v; // Vertex number
         int dist; // Distance of this vertex from source
     }
@@ -12,8 +12,8 @@ public class SnakesAndLadder {
     static int getMinDiceThrows(int move[], int n)
     {
         int visited[] = new int[n];
-        Queue<qentry> qentries = new LinkedList<>();
-        qentry qMeta = new qentry();
+        Queue<Qentry> qentries = new LinkedList<>();
+        Qentry qMeta = new Qentry();
         qMeta.v = 0;
         qMeta.dist = 0;
 
@@ -29,7 +29,7 @@ public class SnakesAndLadder {
 
             for (int j = v + 1; j <= (v + 6) && j < n; ++j) {
                 if (visited[j] == 0) {
-                    qentry subMetaQue = new qentry();
+                    Qentry subMetaQue = new Qentry();
                     subMetaQue.dist = (qMeta.dist + 1);
                     visited[j] = 1;
 

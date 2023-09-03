@@ -5,8 +5,10 @@ package com.java.trees;
 public class PathSum {
 //https://leetcode.com/problems/path-sum/solutions/36367/3-lines-of-c-solution/?orderBy=most_votes
     public boolean hasPathSums(Node2 root, int targetSum) {
-        if(root == null) return false;
-        if(root.data == targetSum && root.left == null && root.right == null) return true;
+        if(root == null)
+            return false;
+        if(root.data == targetSum && root.left == null && root.right == null)
+            return true;
         return hasPathSums(root.left, targetSum - root.data) || hasPathSums(root.right, targetSum - root.data);
     }
 
