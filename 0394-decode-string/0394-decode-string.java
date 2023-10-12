@@ -10,15 +10,16 @@ class Solution {
                 k = k * 10 + ch - '0';
             }
             else if ( ch == '[') {
-                intStack.push(k);
+                intStack.push(k); 
+                k = 0;
                 strStack.push(cur);
                 cur = new StringBuilder();
-                k = 0;
             }
             else if (ch == ']') {
                 StringBuilder tmp = cur;
                 cur = strStack.pop();
-                for (k = intStack.pop(); k > 0; --k)
+                int pop = intStack.pop();
+                for (k = pop; k > 0; --k)
                     cur.append(tmp);
             }
             else
