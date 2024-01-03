@@ -5,7 +5,7 @@ import java.util.*;
 
 public class LongestSubStringWithoutRepeatingCharacters {
 
-	public static int romanToInt(String s) {
+    public static int romanToInt(String s) {
         int nums[]=new int[s.length()];
         for(int i=0;i<s.length();i++){
             switch (s.charAt(i)){
@@ -30,26 +30,26 @@ public class LongestSubStringWithoutRepeatingCharacters {
                 case 'I':
                     nums[i]=1;
                     break;
-                }
+            }
         }
         int sum=0;
-        for(int i=0;i<nums.length;i++){
+        for(int i=0;i<nums.length-1;i++){
             if(nums[i] < nums[i+1]){
                 sum-=nums[i];
             }else{
                 sum+=nums[i];
             }
         }
-        System.out.println(nums[nums.length-1]);
         return sum+nums[nums.length-1];
-                
+
+
     }
 	
 	 public static void main(String[] args)
      {
-	     //int ss  = romanToInt("MCMIV");
-//	     System.out.println(ss);
-	     System.out.println(lengthOfLongestSubstring2("abcbbcb"));
+	     int ss  = romanToInt("MCMXCIV");
+	     System.out.println(ss);
+//	     System.out.println(lengthOfLongestSubstring2("abcbbcb"));
 
      }
 

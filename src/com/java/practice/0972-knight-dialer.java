@@ -1,7 +1,9 @@
-class Solution {
-    int mod = 1_000_000_007;
+package com.java.practice;
 
-    public int knightDialer(int n) {
+class Solution {
+    static int mod = 1_000_000_007;
+
+    public static int knightDialer(int n) {
         if(n == 1) 
             return 10;
         
@@ -22,7 +24,7 @@ class Solution {
         return (int)ans;
     }
 
-    private void helper(long[][] dp, int i, int j){
+    private static void helper(long[][] dp, int i, int j){
         if(j == 1)
             dp[i][j] = (dp[i-1][6] + dp[i-1][8]) % mod;
         else if(j == 3)
@@ -44,7 +46,8 @@ class Solution {
     }
 
     public static void main(String[] args) {
-        System.out.pr
+
+        System.out.println(knightDialer(5));
     }
 
 

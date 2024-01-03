@@ -12,7 +12,7 @@ public class MergeIntervals {
 	        
 	        if(intervals.length == 0 || intervals == null) 
 	            return res.toArray(new int[0][]);
-	        
+	        //based on start timw
 	        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
 
 	        int start = intervals[0][0];
@@ -36,7 +36,7 @@ public class MergeIntervals {
 	    {
 	        int [][]mat = {{2,6}, {1,3}, {8,10}, {15,18}
 	        };
-			int [][]res = merge(mat);
+//			int [][]res = merge(mat);
 
 //			for (int i=0; i< res.length;i++){
 //				for(int j=0;j< res[0].length;i++)
@@ -44,6 +44,6 @@ public class MergeIntervals {
 //				System.out.println();
 //			}
 
-//			System.out.println(merge(mat).toString());
+			System.out.println(merge(mat).toString());
 	    }
 }

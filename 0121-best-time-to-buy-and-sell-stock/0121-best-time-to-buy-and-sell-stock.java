@@ -1,5 +1,5 @@
 class Solution {
-    public int maxProfit(int[] prices) {
+    public static int maxProfit(int[] prices) {
 
 
         int profit =0, minVal = prices[0];
@@ -13,7 +13,10 @@ class Solution {
         }
         return profit;
         
-        
+    }
+
+    public static void main(String[] args) {
+
     }
 }
 

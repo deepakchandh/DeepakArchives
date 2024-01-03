@@ -47,7 +47,7 @@ public class FindTheIndexoftheFirstOccurrenceinAString {
 //        System.out.println(kmp("sadbutsad", "sad"));
 //        System.out.println(kmp("aaaaaaaamaaaaaab", "ababd"));
 //        System.out.println(strStr("sadbutsad", "sad"));
-        System.out.println(strStr("leetcode", "leo"));
+        System.out.println(strStr("sadbutsad", "adb"));
 
     }
 }

@@ -36,7 +36,7 @@ public class UniquePathLC {
     }
 
     public static void main(String[] args) {
-        System.out.println(uniquePaths(3, 2));
+        System.out.println(uniquePaths(3, 7));
 
     }
 }

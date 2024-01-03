@@ -60,7 +60,8 @@ public class TrappingRainWater {
 	{
 		
 //		int[] arr = {3,0,2,0,4};
-		int[] arr = {2,1,5,6,2,3};
+//		int[] arr = {2,1,5,6,2,3};
+		int[] arr = {0,1,0,2,1,0,1,3,2,1,2,1};
 		int n = arr.length;
 //		System.out.print(maxWater(arr, n));
 		System.out.print(trap(arr, n));

@@ -1,7 +1,7 @@
 package com.java.practice;
 //$Id$
 //https://leetcode.com/problems/implement-stack-using-queues/
-//https://leetcode.com/problems/implement-queue-using-stacks/discuss/64206/Short-O(1)-amortized-C%2B%2B-Java-Ruby
+//https://leetcode.com/problems/implement-queue-using-stacks/discuss/64206/Short-O(1)-amortized-C%2B%2B-Java-Ruby - 2 stacks
 import java.util.Queue;
 
 public class StackUsingQ {

@@ -29,7 +29,8 @@ public class Subsets2 {
     }
 
     public static void main(String[] args) {
-        System.out.println(subsets(new int[]{1,2,3}));
+        System.out.println(subsets(new int[]{1,2,3, 1}));
     }
 
 }
+/// not [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]

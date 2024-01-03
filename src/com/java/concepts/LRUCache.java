@@ -2,6 +2,8 @@ package com.java.concepts;
 
 import java.util.*;
 
+//https://www.geeksforgeeks.org/lru-cache-implementation/
+
 public class LRUCache {
     private Deque<Integer> doublyQueue;
 

@@ -9,6 +9,7 @@ public class StockProblem {
         int buy, sell;
     }
 
+    //https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/?envType=study-plan-v2&envId=top-interview-150
 	public static int maxProfit(int prices[]) {
         int profit = 0, i = 0;
         while (i < prices.length) {
@@ -21,6 +22,10 @@ public class StockProblem {
         }
         return profit;
     }
+
+
+
+
 
     // In the given array, calculates the MULTIPLE INTERVALS of max profit
     // calculate by local maxima, local minima.

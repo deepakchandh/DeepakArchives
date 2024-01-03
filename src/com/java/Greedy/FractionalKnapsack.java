@@ -29,10 +29,12 @@ class ItemComp implements Comparator<Item>{
 	
 }
 public class FractionalKnapsack {
-	
+
+
 	
 	private static double getMaxValue(int capacity, Item arr[], int n)
 	{
+		Integer.bitCount(1);
 		Arrays.sort(arr, new ItemComp());
 		double finValue = 0.0;
 		int currWeight =0;

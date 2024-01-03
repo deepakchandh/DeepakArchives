@@ -41,7 +41,7 @@ public class SlidingWindow {
     public static void main(String[] args)
     {
 //        int arr[] = { 12, 1, 78, 90, 57, 89, 56 };
-        int arr[] = { 1 ,2, 3, 1, 4, 5, 2, 3, 6 };
+        int arr[] = { 1,3,-1,-3,5,3,6,7 };
         int K = 3;
 
         printMax(arr, arr.length, K);

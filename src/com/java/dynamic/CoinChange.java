@@ -4,6 +4,13 @@ package com.java.dynamic;
 //https://leetcode.com/problems/coin-change/
 public class CoinChange {
 
+    // 3 variants
+
+    // 1 - no.of changes with Rep
+    // 2 - no.of changes without Rep
+    // 3 - min no. of coins
+
+
     // rep coin logic
     public static int change(int amount, int[] coins) {
         int[] dp = new int[amount + 1];
@@ -28,29 +35,25 @@ public class CoinChange {
     }
 
     public static int noOfCoins(int amount, int[] coins) {
-        if (coins == null || coins.length == 0 || amount <= 0)
-            return 0;
-        int[] dp = new int[amount + 1];
-        for (int i = 1; i < dp.length; i++) {
-            dp[i] = Integer.MAX_VALUE;
-            for (int j = 0; j < coins.length; j++) {
-                if (coins[j] <= i && dp[i - coins[j]] != Integer.MAX_VALUE) {
-                    dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+        int dp[] = new int[amount+1];
+        for (int target = 1; target < dp.length; target++) {
+            dp[target] = dp.length;
+            for (int coin : coins) {
+                if (target >= coin) {
+                    System.out.println(dp[target] + "__"+ dp[target - coin]);
+                    dp[target] = Math.min(dp[target], dp[target - coin] + 1);
                 }
             }
         }
-
-        System.out.println(dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount]);
-
-        return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
+        return dp[amount] == dp.length ? -1 : dp[amount];
     }
 
 
     public static void main(String arg[]) {
-//		int [] coins  = {1,5,10};
-//		int ways  = change(12, coins);
-        int[] coins = {2};
-        int ways = noOfCoins(3, coins);
+		int [] coins  = {1,2,5};
+		int ways  = noOfCoins(11, coins);
+//        int[] coins = {2};
+//        int ways = noOfCoins(3, coins);
 
 
         System.out.println(ways);

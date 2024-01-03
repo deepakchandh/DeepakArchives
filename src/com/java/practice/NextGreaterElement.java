@@ -57,6 +57,7 @@ public class NextGreaterElement {
 // updating the result value from reverse
         for (int i = n - 1; i >= 0; i--) {
             result[i] = -1;
+            int tt = stack.peek();
             while (!stack.isEmpty() && nums[stack.peek()] <= nums[i]) {
                 stack.pop();
             }
@@ -72,7 +73,7 @@ public class NextGreaterElement {
     public static void main(String[] args) {
         int arr[]={97, 87, 35, 45, 12}; // {-1, 97, 45, 97, 97 }
         int[] res = nextGreaterElements(arr);
-//        for(int i: res)
-//            System.out.print(res[i]+" ");
+        for(int i: res)
+            System.out.print(res[i]+" ");
     }
 }
