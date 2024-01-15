@@ -1,5 +1,5 @@
 //$Id$
-package com.java.practice;
+package com.java.slidingWindow;
 //https://leetcode.com/problems/longest-substring-without-repeating-characters/submissions/505505890/
 import java.util.*;
 

@@ -45,7 +45,8 @@ public class WordLadder {
             TrieNode p = root;
             for (char c : w.toCharArray()) {
                 int i = c - 'a';
-                if (p.next[i] == null) p.next[i] = new TrieNode();
+                if (p.next[i] == null)
+                    p.next[i] = new TrieNode();
                 p = p.next[i];
             }
             p.word = w;

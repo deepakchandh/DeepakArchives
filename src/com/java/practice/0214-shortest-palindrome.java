@@ -56,8 +56,8 @@ class ShortestPalindromeProblem {
     }
 
     public static void main(String[] args) {
-        System.out.println(shortestPalindromeRabinKarp("abcd"));
-//        System.out.println(shortestPalindromeRabinKarp("madam"));
+//        System.out.println(shortestPalindromeRabinKarp("abcd"));
+        System.out.println(shortestPalindrome("abcabc"));
     }
 }
 

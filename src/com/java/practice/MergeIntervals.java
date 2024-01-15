@@ -3,6 +3,7 @@ package com.java.practice;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class MergeIntervals {
@@ -14,6 +15,7 @@ public class MergeIntervals {
 	            return res.toArray(new int[0][]);
 	        //based on start timw
 	        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+//	        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0])); -- same as above
 
 	        int start = intervals[0][0];
 	        int end = intervals[0][1];

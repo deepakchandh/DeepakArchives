@@ -31,7 +31,7 @@ public class LRUCache {
                 element, even if it's an intermediate
                 element that needs to be removed and added
                 to the start of the Queue */
-            doublyQueue.remove(page);
+            doublyQueue.remove(page); // removes first occurance of the element.
         }
         doublyQueue.push(page);
         hashSet.add(page);

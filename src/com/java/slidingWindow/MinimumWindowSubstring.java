@@ -28,11 +28,13 @@ public class MinimumWindowSubstring {
 
             // Sliding window.. Removing the older elements
             while(charLeft  == 0){
+                // for result
                 if(minLen > end-start ){
                     minLen = end-start;
                     minStart = start;
                 }
 
+                // Compute smallest value..
                 if(map.containsKey(s.charAt(start))){
                     int count = map.get(s.charAt(start));
                     if (count == 0) {

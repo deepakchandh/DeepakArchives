@@ -53,8 +53,9 @@ static String res="";
     
     public static void main(String[] args)
     {
-        String s = "1432219";
-        int k = 3;
+//        String s = "1432219";
+        String s = "2316";
+        int k = 2;
 //        System.out.println(removeKdigits(s, k));
         System.out.println(removeKdigitWithStackLogic(s,k));
     }
