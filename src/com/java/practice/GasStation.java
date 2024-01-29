@@ -13,22 +13,27 @@ If it's non-negative, return the last point saved in res;
      */
     public static int canCompleteCircuit(int[] gas, int[] cost) {
 
-        int size=gas.length;
-        int sum=0;
-        int res=0;
-        int total=0;
-        for(int i=0; i<size; ++i){
-            sum+=gas[i]-cost[i];
-            if(sum<0){
-                total+=sum;
-                sum=0;
-                res=i+1;
+        int totalTank = 0;
+        int currTank = 0;
+        int startPoint = 0;
+
+        // Iterate through the gas stations
+        for (int i = 0; i < gas.length; i++) {
+            // Update totalTank by calculating the difference between gas and cost for the current station
+            totalTank += gas[i] - cost[i];
+
+            // Update currTank similarly
+            currTank += gas[i] - cost[i];
+
+            // If currTank becomes negative, reset the starting point to the next station and reset currTank to 0
+            if (currTank < 0) {
+                startPoint = i + 1;
+                currTank = 0;
             }
         }
-        total+=sum;
-        return total<0?-1:res;
 
-
+        // If the totalTank is non-negative, a circuit can be completed, return the starting point; otherwise, return -1
+        return totalTank >= 0 ? startPoint : -1;
     }
 
     public static void main(String[] args) {

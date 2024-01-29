@@ -61,7 +61,7 @@ public class DeleteNodesAndReturnForest {
         tree.right.right.left = new TreeNode(7);
 
         DeleteNodesAndReturnForest deleteNodesAndReturnForest = new DeleteNodesAndReturnForest();
-        List<TreeNode> res = deleteNodesAndReturnForest.delNodes(tree, new int[]{5});
+        List<TreeNode> res = deleteNodesAndReturnForest.delNodes(tree, new int[]{2});
 //        List<TreeNode> res = deleteNodesAndReturnForest.delNodesBfs(tree, new int[]{2});
         Vector<Integer> vector = new Vector<>();
         for(TreeNode node: res){
