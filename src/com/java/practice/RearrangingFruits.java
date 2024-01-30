@@ -6,6 +6,25 @@ import java.util.*;
 //https://leetcode.com/problems/rearranging-fruits/solutions/3143992/java-sol/
 public class RearrangingFruits {
 
+    /*
+    Approach
+
+    Create a HashMap map to store the frequency of each element in both baskets
+    Traverse both baskets and update the frequency of each element in map
+    Create a list list to store elements that have a non-zero frequency in map
+    Find the minimum element in map and store it in min
+        For each element key in map:
+        If key is not in map, skip
+        If frequency of key is not divisible by 2, return -1
+        If frequency of key is divisible by 2, add key to the list list for x/2 times
+    Sort the list in ascending order
+    If the size of the list is not divisible by 2, return -1
+        Traverse the list from the middle to the start
+        If list[i] is greater than 2 * min, add 2 * min to sum
+        Else, add list[i] to sum
+    Return sum
+     */
+
     public static long minCost(int[] basket1, int[] basket2) {
 
 
@@ -21,9 +40,11 @@ public class RearrangingFruits {
 
         for(int key : map.keySet()){
             min = Math.min(min,key);
-            int x =Math.abs(map.get(key));
-            if(x == 0)   continue;
-            if(x%2!=0) return -1;
+            int x = Math.abs(map.get(key));
+            if(x == 0)
+                continue;
+            if(x%2!=0)
+                return -1;
             for(int i=0;i<x/2;i++)
                 list.add(key);
         }
@@ -37,73 +58,11 @@ public class RearrangingFruits {
         }
         return sum;
 
-
-
-       /* TreeMap<Integer, Integer> count = new TreeMap<>();
-        for (int a : basket1)
-            count.put(a, count.getOrDefault(a, 1)+1);
-//            count.merge(a, 1, Integer::sum);
-        for (int a : basket2)
-            count.put(a, count.getOrDefault(a, 1)-1);
-//            count.merge(a, -1, Integer::sum);
-
-
-
-
-
-        List<Integer> swaps = new ArrayList<>();
-        long res = 0, small = count.firstKey();
-        for (int a : count.keySet()) {
-            if (count.get(a) % 2 > 0) return -1;
-            int v = Math.abs(count.get(a)) / 2;
-            for (int i = 0; i < v; ++i)
-                swaps.add(a);
-        }
-        for (int i = 0; i < swaps.size() / 2; ++i)
-            res += Math.min(swaps.get(i), small * 2);
-        return res;*/
-
-        /*int min=basket1[0];
-        HashMap<Integer,Integer> hm=new HashMap<>();
-        for(int f:basket1){
-            min=Math.min(min,f);
-            hm.put(f,hm.getOrDefault(f,0)+1);
-        }
-
-        for(int f:basket2){
-            min=Math.min(min,f);
-            hm.put(f,hm.getOrDefault(f,0)-1);
-
-        }
-
-        PriorityQueue<Integer> pq=new PriorityQueue<>();
-        for(int key:hm.keySet()){
-            if(hm.get(key)%2!=0){
-                return -1;
-            }
-
-            for(int i=1;i<=Math.abs(hm.get(key))/2;i++){
-                pq.add(key);
-            }
-        }
-
-
-        int k=pq.size()/2;
-        long ans=0;
-        while(k-->0){
-            if(pq.peek()<2*min){
-                ans+=pq.remove();
-            }else{
-                ans+=2*min;
-            }
-        }
-
-        return ans;*/
-
     }
 
     public static void main(String[] args) {
-        System.out.println(minCost(new int[]{2,3,4,1}, new int[]{3,2,5,1}));
+//        System.out.println(minCost(new int[]{2,3,4,1}, new int[]{3,2,5,1}));
+        System.out.println(minCost(new int[]{4,2,2,2}, new int[]{1,4,1,2}));
 
     }
 }
