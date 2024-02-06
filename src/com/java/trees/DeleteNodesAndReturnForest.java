@@ -68,14 +68,11 @@ public class DeleteNodesAndReturnForest {
             vector.add(node.val);
         }
         System.out.println("Roots Present: "+vector);
-
-
-
-
     }
 
 
 }
+
 
 /*
 public List<TreeNode> delNodesBfs(TreeNode root, int[] to_delete) {

@@ -5,16 +5,20 @@ package com.java.practice;
 public class FindTheIndexoftheFirstOccurrenceinAString {
 
     public static int strStr(String haystack, String needle) {
-        for (int i = 0; ; i++) {
-            for (int j = 0; ; j++) {
-                if (j == needle.length())
-                    return i;
-                if (i + j == haystack.length())
-                    return -1;
-                if (needle.charAt(j) != haystack.charAt(i + j))
-                    break;
+        int l1 = haystack.length(), l2 = needle.length();
+        // base cases
+        if (l1 < l2) {
+            return -1;
+        } else if (l2 == 0) {
+            return 0;
+        }
+        int length = l1 - l2;
+        for (int i = 0; i <= length; ++i) {
+            if (haystack.substring(i,i+l2).equals(needle)) {
+                return i;
             }
         }
+        return -1;
 
     }
     static int kmp(String string, String pattern) {

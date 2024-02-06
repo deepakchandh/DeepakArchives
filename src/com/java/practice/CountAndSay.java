@@ -41,7 +41,7 @@ public class CountAndSay {
     public static void main(String[] args) {
 
         CountAndSay say = new CountAndSay();
-        System.out.println(say.countAndSay(4));
+        System.out.println(say.countAndSay(6));
 //        System.out.println(say.countAndSay(6));
 
     }

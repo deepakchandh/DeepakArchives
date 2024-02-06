@@ -50,7 +50,8 @@ public class RearrangingFruits {
         }
 
         Collections.sort(list);
-        if(list.size()%2 != 0)  return -1;
+        if(list.size()%2 != 0)
+            return -1;
         for(int i=list.size()/2 -1;i>=0;i--){
             if(list.get(i) > 2*min)
                 sum+=2*min;
