@@ -30,6 +30,6 @@ public class ExactlyThreeDivisors {
     }
 
     public static void main(String[] args) {
-
+        numbersWith3Divisors(300);
     }
 }

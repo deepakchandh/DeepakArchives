@@ -37,10 +37,10 @@ public class MeetingGFG{
 	{
 
 		// Starting time
-		int s[] = { 1, 3, 0, 5, 8, 5 };
+		int s[] = {  3, 0,1, 5, 8, 5 };
 
 		// Finish time
-		int f[] = { 2, 4, 6, 7, 9, 9 };
+		int f[] = { 4, 6,2, 7, 9, 9 };
 
 		ArrayList<Meeting> meet = new ArrayList<>();
 		for(int i = 0; i < s.length; i++)
@@ -50,6 +50,8 @@ public class MeetingGFG{
 
 	private static void maxMeeting(ArrayList<Meeting> meet, int size) {
 		List<Integer> finalList =  new ArrayList<Integer>();
+
+//		Collections.sort(meet, new MyComp());
 		
 		Collections.sort(meet, new MyComp());
 		finalList.add(meet.get(0).pos);
