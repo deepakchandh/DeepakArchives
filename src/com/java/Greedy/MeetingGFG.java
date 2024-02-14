@@ -52,8 +52,9 @@ public class MeetingGFG{
 		List<Integer> finalList =  new ArrayList<Integer>();
 
 //		Collections.sort(meet, new MyComp());
+		Collections.sort(meet, (a,b) -> a.end - b.end);
 		
-		Collections.sort(meet, new MyComp());
+//		Collections.sort(meet, new MyComp());
 		finalList.add(meet.get(0).pos);
 		
 		int timeLimit = meet.get(0).end; // 1st index timeLimit
