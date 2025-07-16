@@ -1,7 +1,19 @@
 package com.java.arrays;
 
+//https://leetcode.com/problems/set-matrix-zeroes/description/
 // #arrays #matrix
 public class SetMatrixZeroes {
+
+    // fr = first row
+    // fc = first col
+
+    // Use first row and first column as markers.
+    // if matrix[i][j] = 0, mark respected row and col marker = 0; indicating
+    // that later this respective row and col must be marked 0;
+    // And because you are altering first row and collumn,
+    // you need to  have two variables to track their own status.
+    // So, for ex, if any one of the first row is 0, fr = 0,
+    // and at the end set all first row to 0;
 
 
     public static void setZeroes(int[][] matrix) {
@@ -40,8 +52,9 @@ public class SetMatrixZeroes {
 
     public static void main(String[] args) {
 //        int arr[][] = { {1,1,1}, {1,0,1}, {1,1,1} };
-        int arr[][] = { {0,1,2,0}, {3,4,5,2}, {1,3,1,5} };
+        int arr[][] = { {1,1,2,4}, {0,4,5,0}, {1,3,1,5} };
         setZeroes(arr);
+        System.out.println("temp");
 //        setZeroes();
     }
 }

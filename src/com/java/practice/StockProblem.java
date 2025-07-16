@@ -71,7 +71,8 @@ public class StockProblem {
 	public static void main(String[] args)
 	{
 //		int arr[]={100, 180, 260, 310, 40, 535, 695};// 865
-		int arr[]={7,1,5,3,6,4}; // 7
+//		int arr[]={7,1,5,3,6,4}; // 7
+		int arr[]={1,2,3,4,5};
         StockProblem stockProblem = new StockProblem();
 		System.out.println("Result: " +maxProfit(arr));
 //        stockProblem.stockBuySell(arr, 7);

@@ -4,7 +4,7 @@ import java.util.*;
 
 //https://leetcode.com/problems/largest-rectangle-in-histogram/submissions/926059150/
 public class TrappingRainWater2 {
-    public int largestRectangleArea(int[] heights) {
+    public static int largestRectangleArea(int[] heights) {
 
         int n = heights.length;
         Stack<Integer> stack = new Stack();
@@ -23,7 +23,9 @@ public class TrappingRainWater2 {
     }
 
     public static void main(String[] args) {
-
+        int[] arr = {2,1,5,6,2,3};
+        int n = arr.length;
+        System.out.println(largestRectangleArea(arr)); // Expected: 10
 
     }
 }
