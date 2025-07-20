@@ -2,6 +2,21 @@ package com.java.LinkedList;
 //https://www.geeksforgeeks.org/merge-two-sorted-linked-lists-such-that-merged-list-is-in-reverse-order/
 public class SortedLLInReverse {
 
+    // https://www.geeksforgeeks.org/dsa/reverse-a-linked-list/
+    public ListNode reverseList(ListNode head) {
+
+        ListNode prev = null, curr = head, next = null;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+        return prev;
+    }
+
+
     Node head;  // head of list
     static Node a, b;
 
