@@ -7,47 +7,45 @@ import java.util.*;
 public class MinimumWindowSubstring {
 
     public static String minWindowSliding(String s, String t) {
-        int minStart =0, minLen =Integer.MAX_VALUE, start=0, end=0;
-
-        HashMap<Character, Integer> map = new HashMap<>();
-        for (int i = 0; i < t.length(); i++) {
-            map.put(t.charAt(i), map.getOrDefault(t.charAt(i), 0) + 1);
+        if (s == null || t == null || s.length() == 0 || t.length() == 0 ||
+                s.length() < t.length()) {
+            return new String();
+        }
+        int[] map = new int[128];
+        int count = t.length();
+        int start = 0, end = 0, minLen = Integer.MAX_VALUE, startIndex = 0;
+        /// UPVOTE !
+        for (char c : t.toCharArray()) {
+            map[c]++;
         }
 
-        int charLeft = t.length();
+        char[] chS = s.toCharArray();
 
-        while(end < s.length()){
-            if(map.containsKey(s.charAt(end))){
-                int cnt = map.get(s.charAt(end));
-                if (cnt > 0) {
-                    charLeft--;
-                }
-                map.put(s.charAt(end), cnt-1);
-            }
+        while (end < chS.length) {
+            char c = chS[end];
             end++;
-
-            // Sliding window.. Removing the older elements
-            while(charLeft  == 0){
-                // for result
-                if(minLen > end-start ){
-                    minLen = end-start;
-                    minStart = start;
-                }
-
-                // Compute smallest value..
-                if(map.containsKey(s.charAt(start))){
-                    int count = map.get(s.charAt(start));
-                    if (count == 0) {
-                        charLeft++;
-                    }
-                    map.put(s.charAt(start), count+1);
-                }
-
-                start++;
+            if (map[c] > 0) {
+                count--;
             }
+            map[c]--;
 
+            while (count == 0) {
+                if (end - start < minLen) {
+                    startIndex = start;
+                    minLen = end - start;
+                }
+                char cStart = chS[start];
+                start++;
+                if (map[cStart] == 0) {
+                    count++;
+                }
+                map[cStart]++;
+            }
         }
-        return minLen == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLen);
+
+        return minLen == Integer.MAX_VALUE ? new String() :
+                new String(chS, startIndex, minLen);
+
     }
 
     public static void main(String[] args) {

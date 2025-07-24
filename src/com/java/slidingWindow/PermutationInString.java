@@ -17,6 +17,8 @@ public class PermutationInString {
             return true;
 
         for (int i = len1; i < len2; i++) {
+            System.out.println(s2.charAt(i));
+            System.out.println(s2.charAt(i - len1));
             count[s2.charAt(i) - 'a']--;
             count[s2.charAt(i - len1) - 'a']++;
             if (allZero(count))
