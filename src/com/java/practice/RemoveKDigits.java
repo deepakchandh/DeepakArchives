@@ -6,7 +6,38 @@ import java.util.*;
 //https://www.geeksforgeeks.org/build-lowest-number-by-removing-n-digits-from-a-given-number/
 public class RemoveKDigits {
 
-static String res="";
+
+    public static String removeKdigitsDequeGPTLogic(String num, int k){
+
+        if (k == num.length()) return "0";
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        for(char digit: num.toCharArray()){
+            if(k>0 && !deque.isEmpty() && deque.peek() > digit){
+                deque.pop();
+                k--;
+            }
+            deque.addFirst(digit);
+        }
+
+        while (k > 0){
+            deque.pop();
+            k--;
+        }
+        StringBuilder stringBuilder = new StringBuilder();
+        for(char c: deque){
+            stringBuilder.append(c);
+        }
+        stringBuilder.reverse();
+        // Strip leading zeros
+        while (stringBuilder.length() > 1 && stringBuilder.charAt(0) == '0') {
+            stringBuilder.deleteCharAt(0);
+        }
+
+        return stringBuilder.toString();
+
+    }
 
     public static String removeKdigitWithStackLogic(String num, int k)
     {
@@ -50,13 +81,18 @@ static String res="";
 
         return str;
     }
+
+
     
     public static void main(String[] args)
     {
-//        String s = "1432219";
-        String s = "2316";
-        int k = 2;
-//        System.out.println(removeKdigits(s, k));
-        System.out.println(removeKdigitWithStackLogic(s,k));
+        String s ="765028321";
+        int k = 5;
+        System.out.println(removeKdigitsDequeGPTLogic(s,k));
+
+        // find lowest number after removing k digits
+
+
+
     }
 }

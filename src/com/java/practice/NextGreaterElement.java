@@ -19,40 +19,14 @@ public class NextGreaterElement {
         return next;
     }
 
-
-
-//int arr[]={97, 87, 35, 45, 12}; // {-1, 97, 45, 97, 97 }
-    public static int[] nextGreaterElementss(int[] nums) {
-        int n = nums.length;
-        int[] result = new int[n];
-
-        Stack<Integer> stack = new Stack<>();
-        // push elements of stack in rev
-        for (int i = n - 1; i >= 0; i--) {
-            stack.push(i);
-        }
-
-        for(int i=n-1 ; i>=0 ; i--){
-            result[i] = -1;
-            while (!stack.empty() && nums[stack.peek()] <= nums[i]){
-                stack.pop();
-            }
-            if (!stack.empty()){
-                result[i] = nums[stack.peek()];
-            }
-            stack.push(i);
-        }
-        return result;
-    }
-
 /// https://leetcode.com/problems/next-greater-element-ii/discuss/98262/Typical-ways-to-solve-circular-array-problems.-Java-solution.
-    public static int[] nextGreaterElements(int[] nums) {
+    /*public static int[] nextGreaterElements(int[] nums) {
         int n = nums.length;
         int[] result = new int[n];
 
         Stack<Integer> stack = new Stack<>();
         for (int i = n - 1; i >= 0; i--) {
-            stack.push(i);
+            stack.push(i); // 4,3,2,1,0
         }
 // updating the result value from reverse
         for (int i = n - 1; i >= 0; i--) {
@@ -68,12 +42,13 @@ public class NextGreaterElement {
         }
 
         return result;
-    }
+    }*/
 
     public static void main(String[] args) {
         int arr[]={97, 87, 35, 45, 12}; // {-1, 97, 45, 97, 97 }
-        int[] res = nextGreaterElements(arr);
-        for(int i: res)
-            System.out.print(res[i]+" ");
+        int[] res = nextGreaterElements2(arr);
+//        for(int i: res)
+//            System.out.print(res[i]+" ");
     }
+
 }
