@@ -1,6 +1,8 @@
 //$Id$
 package com.java.dynamic;
 
+import java.util.Arrays;
+
 //https://leetcode.com/problems/coin-change/
 public class CoinChange {
 
@@ -35,23 +37,31 @@ public class CoinChange {
     }
 
     public static int noOfCoins(int amount, int[] coins) {
-        int dp[] = new int[amount+1];
-        for (int target = 1; target < dp.length; target++) {
-            dp[target] = dp.length;
+        int max = amount + 1;
+        int[] dp = new int[amount + 1];
+
+        Arrays.fill(dp, max);
+        dp[0] = 0;
+
+        for (int i = 1; i <= amount; i++) {
             for (int coin : coins) {
-                if (target >= coin) {
-                    System.out.println(dp[target] + "__"+ dp[target - coin]);
-                    dp[target] = Math.min(dp[target], dp[target - coin] + 1);
+                if (i - coin >= 0) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                 }
             }
         }
-        return dp[amount] == dp.length ? -1 : dp[amount];
+
+        return dp[amount] > amount ? -1 : dp[amount];
     }
 
 
     public static void main(String arg[]) {
-		int [] coins  = {1,2,5};
-		int ways  = noOfCoins(11, coins);
+
+        /*
+        coins = [1, 5, 10] amount = 12
+         */
+		int [] coins  = {1,5,10};
+		int ways  = noOfCoins(12, coins);
 //        int[] coins = {2};
 //        int ways = noOfCoins(3, coins);
 
