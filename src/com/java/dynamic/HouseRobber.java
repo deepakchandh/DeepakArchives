@@ -8,33 +8,45 @@ public class HouseRobber {
 
     public static  int rob(int[] nums) {
 
-        int prev1 = 0, prev2 = 0;
-        for(int num: nums){
-            int tmp = prev1;
-            prev1 = Math.max(prev2+num, prev1);
-            prev2 = tmp;
+        int dp[] = new int[nums.length+1];
+
+        if (nums.length == 1) return nums[0];
+
+        dp[0] = nums[0];
+        dp[1] = Math.max(nums[0], nums[1]);
+
+        for(int i=2;i<nums.length;i++){
+            dp[i] = Math.max(dp[i-1], dp[i-2]+nums[i]);
         }
-        return prev1;
+
+        return dp[nums.length-1];
 
 //        return rob(nums, nums.length - 1);
     }
 
 
     public int robCircular(int[] nums) {
-        if (nums.length == 1)
-            return nums[0];
-        return Math.max(rob(nums, 0, nums.length - 2), rob(nums, 1, nums.length - 1)); // circular and non-circular
+        int n = nums.length;
+        if (n == 1) return nums[0];
+        if (n == 2) return Math.max(nums[0], nums[1]);
+
+        int max1 = robLinearDP(nums, 0, n - 2); // exclude last house
+        int max2 = robLinearDP(nums, 1, n - 1); // exclude first house
+        return Math.max(max1, max2);
     }
 
-    public int rob(int[] nums, int lo, int hi) {
-        int prev1 = 0, prev2 = 0;
-        for (int j = lo; j <= hi; j++) {
-            int tmp = prev1;
-            prev1 = Math.max(prev2+nums[j], tmp);
-            prev2 = tmp;
-        }
-        return prev1;
+    private int robLinearDP(int[] nums, int start, int end) {
+        int len = end - start + 1;
+        int[] dp = new int[len];
+        dp[0] = nums[start];
+        if (len == 1) return dp[0];
+        dp[1] = Math.max(nums[start], nums[start + 1]);
 
+        for (int i = 2; i < len; i++) {
+            dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[start + i]);
+        }
+
+        return dp[len - 1];
     }
 
     private static int rob(int[] nums, int i){

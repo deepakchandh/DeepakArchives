@@ -3,7 +3,7 @@ package com.java.dynamic;
 //https://leetcode.com/problems/longest-palindromic-substring/?envType=list&envId=xlern30i
 public class LongestPalindrome {
 
-    private static int lo, maxLen;
+    private static int start, end;
 
     public static String longestPalindrome(String s) {
         int len = s.length();
@@ -14,7 +14,7 @@ public class LongestPalindrome {
             extendPalindrome(s, i, i);  //assume odd length, try to extend Palindrome as possible
             extendPalindrome(s, i, i+1); //assume even length.
         }
-        return s.substring(lo, lo + maxLen);
+        return s.substring(start, start + end);
     }
 
     private static void extendPalindrome(String s, int j, int k) {
@@ -22,9 +22,9 @@ public class LongestPalindrome {
             j--;
             k++;
         }
-        if (maxLen < k - j - 1) {
-            lo = j + 1;
-            maxLen = k - j - 1;
+        if (end < k - j - 1) {
+            start = j + 1;
+            end = k - j - 1;
         }
     }
 	
