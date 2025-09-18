@@ -6,30 +6,47 @@ package com.java.backtracking;
 public class WordSearch {
 
     public static boolean exist(char[][] board, String word) {
-        char[] w = word.toCharArray();
-        for (int y=0; y<board.length; y++) {
-            for (int x=0; x<board[y].length; x++) {
-                if (exist(board, y, x, w, 0))
+        int rows = board.length, cols = board[0].length;
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < cols; c++) {
+                if (dfs(board, word, r, c, 0)) {
                     return true;
+                }
             }
         }
         return false;
     }
 
-    private static boolean exist(char[][] board, int y, int x, char[] word, int i) {
-        if (i == word.length)
+    private static boolean dfs(char[][] board, String word, int r, int c, int index) {
+
+        // Check boundaries + current char match
+        if (r < 0 || r >= board.length || c < 0 || c >= board[0].length
+                || board[r][c] != word.charAt(index)) {
+            return false;
+        }
+
+        // If we matched the last character
+        if (index == word.length() - 1) {
             return true;
-        if (y<0 || x<0 || y == board.length || x == board[y].length)
-            return false;
-        if (board[y][x] != word[i])
-            return false;
-        board[y][x] ^= 256; // binary value of 10000000 - so that it doesn't get used by other
-        boolean exist = exist(board, y, x+1, word, i+1)
-                || exist(board, y, x-1, word, i+1)
-                || exist(board, y+1, x, word, i+1)
-                || exist(board, y-1, x, word, i+1);
-        board[y][x] ^= 256;
-        return exist;
+        }
+
+        // Mark visited
+        char temp = board[r][c];
+        board[r][c] = '#';
+
+        int[][] directions = {{-1,0},{0,1},{1,0},{0,-1}};
+        for (int[] d : directions) {
+            int nr = r + d[0], nc = c + d[1];
+            if (dfs(board, word, nr, nc, index + 1)) {
+                board[r][c] = temp; // restore before returning
+                return true;
+            }
+        }
+
+        // Backtrack (restore cell)
+        board[r][c] = temp;
+        return false;
     }
 
     public static void main(String[] args) {
@@ -38,7 +55,7 @@ public class WordSearch {
                         {'S','F','C','S'},
                         {'A','D','E','E'}
                 };
-        String word = "ABCCED";
+        String word = "CCS";
         System.out.println(exist(board, word));
     }
 }

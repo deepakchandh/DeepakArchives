@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class Test {
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
@@ -26,6 +28,5 @@ public class Test {
     {
         Test d = new Test();
         d.merge(new int[]{1,2,3,0,0,0}, 3, new int[]{2,5,6}, 3);
-
     }
 }

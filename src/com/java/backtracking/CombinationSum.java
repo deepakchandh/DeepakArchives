@@ -1,52 +1,37 @@
 package com.java.backtracking;
 
 import java.util.*;
-// https://leetcode.com/problems/combination-sum-ii/
+
 public class CombinationSum {
 
-    static boolean isSubsetSum(int set[], int n, int sum)
-    {
-        // Base Cases
-        if (sum == 0)
-            return true;
-        if (n == 0)
-            return false;
-
-        // If last element is greater than
-        // sum, then ignore it
-        if (set[n - 1] > sum)
-            return isSubsetSum(set, n - 1, sum);
-
-        // Else, check if sum can be obtained
-        // by any of the following
-        // (a) including the last element
-        // (b) excluding the last element
-        return isSubsetSum(set, n - 1, sum)
-                || isSubsetSum(set, n - 1, sum - set[n - 1]);
+    public List<List<Integer>> combinationSumResl(int[] candidates, int target) {
+        Arrays.sort(candidates); // sort for pruning
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(candidates, target, 0, new ArrayList<>(), result);
+        return result;
     }
 
-    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> list = new ArrayList<>();
-        backtrack(list, new ArrayList<>(), candidates, target, 0);
-        return list;
-    }
+    private void backtrack(int[] candidates, int remain, int start,
+                           List<Integer> path, List<List<Integer>> result) {
 
-    private static void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] nums, int remain, int start){
-        if(remain < 0)
+        if(remain == 0){
+            result.add(new ArrayList<>(path));
             return;
-        else if(remain == 0)
-            list.add(new ArrayList<>(tempList));
-        else{
-            for(int i = start; i < nums.length; i++){
-                tempList.add(nums[i]);
-                backtrack(list, tempList, nums, remain - nums[i], i); // not i + 1 because we can reuse same elements
-                tempList.remove(tempList.size() - 1);
-            }
         }
+
+
+        for (int i = start; i < candidates.length; i++) {
+            if (candidates[i] > remain)
+                break; // prune early
+            path.add(candidates[i]);
+            backtrack(candidates, remain - candidates[i], i, path, result);
+            path.remove(path.size() - 1);
+        }
+
     }
 
     public static void main(String[] args) {
-//        System.out.println(combinationSum(new int[]{2,3,6,7}, 7));
-        System.out.println(combinationSum(new int[]{3, 34, 4, 12, 5, 2}, 30));
+        CombinationSum combinationSum = new CombinationSum();
+        System.out.println(combinationSum.combinationSumResl(new int[]{2,5,6,9}, 9));
     }
 }
