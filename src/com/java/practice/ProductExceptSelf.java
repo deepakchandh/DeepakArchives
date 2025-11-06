@@ -9,6 +9,7 @@ public class ProductExceptSelf {
         for (int i = 1; i < n; i++) {
             left[i] = left[i - 1] * nums[i - 1];
         }
+        // left = [1, 1, 2, 6]
         int right =1;
         for (int i = n - 1; i >= 0; i--) {
             left[i] *= right;
@@ -19,7 +20,7 @@ public class ProductExceptSelf {
     }
 
     public static void main(String[] args) {
-        System.out.println(productExceptSelf(new int[]{2,3,4,5}));
+        System.out.println(productExceptSelf(new int[]{1,2,3,4}));
         //60,40,30,24
     }
 }

@@ -8,13 +8,20 @@ import java.util.List;
 
 public class MergeIntervals {
 
+	/*
+	For list
+	 public boolean canAttendMeetings(List<Interval> intervals) {
+        Collections.sort(intervals,  Comparator.comparingInt(i->i.start));
+
+	 */
+
 	 public static int[][] merge(int[][] intervals) {
 	        List<int[]> res = new ArrayList<>();
 	        
 	        if(intervals.length == 0 || intervals == null) 
 	            return res.toArray(new int[0][]);
-	        //based on start timw
-	        Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+	        //based on start time
+	        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
 //	        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0])); -- same as above
 
 	        int start = intervals[0][0];
