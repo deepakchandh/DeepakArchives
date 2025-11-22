@@ -37,7 +37,7 @@ public class LongestSubStringWithoutRepeatingCharacters {
             if(nums[i] < nums[i+1]){
                 sum-=nums[i];
             }else{
-                sum+=nums[i];
+                sum+=nums[i];//1900->1890+100=1990->1989->1994
             }
         }
         return sum+nums[nums.length-1];
@@ -53,41 +53,4 @@ public class LongestSubStringWithoutRepeatingCharacters {
 
      }
 
-    public static int lengthOfLongestSubstring2(String s) {
-        int i = 0, j = 0, max = 0;
-        Set<Character> set = new HashSet<>();
-
-        while (j < s.length()) {
-            if (!set.contains(s.charAt(j))) {
-                set.add(s.charAt(j++));
-                max = Math.max(max, set.size());
-            } else {
-                set.remove(s.charAt(i++));
-            }
-        }
-
-        return max;
-
-    }
-
-
-
-	public static int lengthOfLongestSubstring(String s) {
-
-		if (s.length()==0) 
-			return 0;
-		int maxi=0;
-		ArrayList<Character> list = new ArrayList<>();
-		for (int i=0; i<s.length(); ++i){
-			if(! list.contains(s.charAt(i))){
-				list.add(s.charAt(i));
-			}else{
-				maxi = Math.max(maxi, list.size());
-				list.clear();
-				list.add(s.charAt(i));
-			}
-
-		}
-		return maxi;
-	}
 }

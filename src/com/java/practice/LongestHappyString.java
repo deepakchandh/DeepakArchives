@@ -5,39 +5,37 @@ import java.util.Arrays;
 public class LongestHappyString {
 
     public static String longestDiverseString(int a, int b, int c) {
+        int[][] chars = { {a, 'a'},
+                {b, 'b'},
+                {c, 'c'} };
+
         StringBuilder sb = new StringBuilder();
 
-        // Characters and their counts
-        int[][] letters = {
-                {a, 'a'},
-                {b, 'b'},
-                {c, 'c'}
-        };
-
         while(true){
-            Arrays.sort(letters, (x, y) -> x[0] - y[0]);
+            Arrays.sort(chars, (x, y) -> y[0] - x[0]);
 
-            boolean appended = false;
+            boolean added = false;
 
-            for(int i=2;i>=0;i--){
-                int count = letters[i][0];
-                char ch = (char) letters[i][1];
-
-                if(count == 0) continue;
-
+            for (int i = 0; i < 3; i++) {
                 int len = sb.length();
-                if (len >= 2 && sb.charAt(len - 1) == ch && sb.charAt(len - 2) == ch) {
-                    continue;
-                }
 
-                sb.append(ch);
-                letters[i][0]--;
-                appended = true;
+                if(chars[i][0] == 0)
+                    continue;
+
+                if(len >= 2 && sb.charAt(len-1) == chars[i][1] && sb.charAt(len - 2) == chars[i][1])
+                    continue;
+
+
+                // use this char
+                sb.append((char) chars[i][1]);
+                chars[i][0]--;
+                added = true;
                 break;
 
             }
-            if (!appended) break;
+            if (!added) break;
         }
+
         return sb.toString();
 
     }
