@@ -28,7 +28,7 @@ public class ReconstructItinerary {
 
     public static void main(String[] args) {
         ReconstructItinerary reconstructItinerary = new ReconstructItinerary();
-//        System.out.println(reconstructItinerary.findItinerary(new String[][]{{"MUC","LHR"}, {"JFK","MUC"}, {"SFO","SJC"}, {"LHR","SFO"} }));
-        System.out.println(reconstructItinerary.findItinerary(new String[][]{{"JFK","SFO"},{"JFK","ATL"},{"SFO","ATL"},{"ATL","JFK"},{"ATL","SFO"}}));
+        System.out.println(reconstructItinerary.findItinerary(new String[][]{{"MUC","LHR"}, {"JFK","MUC"}, {"SFO","SJC"}, {"LHR","SFO"} }));
+//        System.out.println(reconstructItinerary.findItinerary(new String[][]{{"JFK","SFO"},{"JFK","ATL"},{"SFO","ATL"},{"ATL","JFK"},{"ATL","SFO"}}));
     }
 }

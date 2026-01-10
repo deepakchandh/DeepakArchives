@@ -86,8 +86,8 @@ public class RemoveKDigits {
     
     public static void main(String[] args)
     {
-        String s ="765028321";
-        int k = 5;
+        String s ="1432219";
+        int k = 3;
         System.out.println(removeKdigitsDequeGPTLogic(s,k));
 
         // find lowest number after removing k digits

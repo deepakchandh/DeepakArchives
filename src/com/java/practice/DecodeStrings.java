@@ -33,7 +33,7 @@ public class DecodeStrings {
 
     public static void main(String[] args) {
 
-        System.out.println(decodeString("11[a2[c]]"));
+        System.out.println(decodeString("3[a]2[bc]"));
 
     }
 }

@@ -15,7 +15,21 @@ public class PriorityQue {
 		// for Max heap
 //		PriorityQueue<Integer> maxHeap = new PriorityQueue<Integer>(Collections.reverseOrder());
 //		maxHeap.add(7);maxHeap.add(10);maxHeap.add(4);maxHeap.add(3);maxHeap.add(20);maxHeap.add(15);
-		
+
+		/*
+
+		int[] arr = {id, score};
+		PriorityQueue<int[]> maxHeap = new PriorityQueue<>(
+    (a, b) -> {
+        if (a[1] != b[1]) {
+            return Integer.compare(b[1], a[1]); // higher score first
+        }
+        return Integer.compare(a[0], b[0]);     // smaller id first
+    }
+);
+    }
+);
+		 */
 		
 		int k = 1;
 		Boolean isAvailable = true;
