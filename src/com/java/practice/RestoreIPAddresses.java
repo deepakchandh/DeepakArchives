@@ -4,6 +4,51 @@ import java.util.*;
 
 public class RestoreIPAddresses {
 
+    // iteration
+
+    public static List<String> restoreIpAddressesIter(String s) {
+        List<String> result = new ArrayList<>();
+        int n = s.length();
+        if (n < 4 || n > 12) return result; // Quick bounds check
+
+        for (int i = 1; i <= 3 && i < n; i++) {
+            String s1 = s.substring(0, i);
+            if (!isValid(s1)) continue;
+
+            for (int j = i + 1; j <= i + 3 && j < n; j++) {
+                String s2 = s.substring(i, j);
+                if (!isValid(s2)) continue;
+
+                for (int k = j + 1; k <= j + 3 && k < n; k++) {
+                    int remaining = n - k;
+                    if (remaining < 1 || remaining > 3) continue;
+
+                    String s3 = s.substring(j, k);
+                    String s4 = s.substring(k);
+
+                    if (isValid(s3) && isValid(s4)) {
+                        result.add(s1 + "." + s2 + "." + s3 + "." + s4);
+                    }
+                }
+            }
+        }
+
+        return result;
+    }
+
+
+    private static boolean isValid(String s) {
+        if (s.length() == 0 || s.length() > 3)
+            return false;
+        if (s.charAt(0) == '0' && s.length() > 1)
+            return false;
+        int val = Integer.parseInt(s);
+        return val >= 0 && val <= 255;
+    }
+
+
+    /// --- back track
+
     public static List<String> restoreIpAddresses(String s) {
         List<String> result = new ArrayList<>();
         backtrack(s, 0, new ArrayList<>(), result);
@@ -41,6 +86,6 @@ public class RestoreIPAddresses {
 
     public static void main(String[] args) {
         String input = "24925411135";
-        System.out.println(restoreIpAddresses(input));
+        System.out.println(restoreIpAddressesIter(input));
     }
 }

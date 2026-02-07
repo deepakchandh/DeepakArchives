@@ -1,6 +1,30 @@
 //$Id$
 package com.java.LinkedList;
 
+ /*
+ // We use a dummy node to avoid special-case logic when the head itself needs to be removed.
+        // with dummy it is safe to access previous node..
+When Should You Use a Dummy Node?
+
+Use it when:
+
+Nodes may be removed
+
+Head may change
+
+You want cleaner pointer logic
+
+Common problems:
+
+Remove elements
+
+Remove Nth from end
+
+Partition list
+
+Reverse sublist
+*/
+
 public class Flattening {
 	Node head; // head of list
 

@@ -10,7 +10,7 @@ public class LRUCacheInbuiltDLL {
     private Map<Integer, Integer> cacheMap;
 
     // Stores keys in the order of access
-    private LinkedList<Integer> lruList;
+    private LinkedList<Integer> lruList; // DLL
 
     // Constructor to initialize the cache with a given
     // capacity

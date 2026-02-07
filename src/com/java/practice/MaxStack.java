@@ -19,47 +19,69 @@ You must come up with a solution that supports O(1) for each top call and O(logn
 
      */
 
-    Stack<int[]> stack;
-    //  first index it will store original value and in second index it will store current max value
+    private Stack<Integer> stack;
+    private Stack<Integer> maxStack;
+
     public MaxStack() {
         stack = new Stack<>();
-
+        maxStack = new Stack<>();
     }
 
     public void push(int x) {
-        if(stack.size()==0) {
-            stack.add(new int[]{x, x});
-        }
-        else {
-            int current_max = stack.peek()[1];
-            int new_max = Math.max(x, current_max);
-            stack.add(new int[]{x, new_max});
+        stack.push(x);
+        if (maxStack.isEmpty()) {
+            maxStack.push(x);
+        } else {
+            maxStack.push(Math.max(x, maxStack.peek()));
         }
     }
 
     public int pop() {
-        return stack.pop()[0];
+        maxStack.pop();
+        return stack.pop();
     }
 
     public int top() {
-        return stack.peek()[0];
+        return stack.peek();
     }
 
     public int peekMax() {
-        return stack.peek()[1];
+        return maxStack.peek();
     }
 
     public int popMax() {
-        Stack<int[]> temp_stack = new Stack<>();
-        int max_val = stack.peek()[1];
-        while(stack.peek()[0] != max_val) {
-            temp_stack.add(stack.pop());
+        int max = peekMax();
+        Stack<Integer> buffer = new Stack<>();
+
+        // Remove elements until max is found
+        while (top() != max) {
+            buffer.push(pop());
         }
-        int ans = stack.pop()[1];
-        while(temp_stack.size()!=0) {
-            push(temp_stack.pop()[0]);
+
+        // Remove the max itself
+        pop();
+
+        // Restore the elements
+        while (!buffer.isEmpty()) {
+            push(buffer.pop());
         }
-        return ans;
+
+        return max;
+    }
+
+    public static void main(String[] args) {
+        MaxStack stk = new MaxStack();
+
+        stk.push(5);
+        stk.push(1);
+        stk.push(5);
+
+        System.out.println(stk.top());     // 5
+        System.out.println(stk.popMax());  // 5
+        System.out.println(stk.top());     // 1
+        System.out.println(stk.peekMax()); // 5
+        System.out.println(stk.pop());     // 1
+        System.out.println(stk.top());     // 5
     }
 
 }
